@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { FaPlus } from "react-icons/fa6";
 
 interface Props {
@@ -5,7 +6,7 @@ interface Props {
   className?: string;
 }
 
-export default function AddTodoButton({ onClick, className }: Props) {
+const AddTodoButton: FC<Props> = ({ onClick, className }) => {
   return (
     <button
       className={`${className} bg-blue-600  text-white rounded-full aspect-square`}
@@ -14,4 +15,6 @@ export default function AddTodoButton({ onClick, className }: Props) {
       <FaPlus className="mx-auto my-auto" />
     </button>
   );
-}
+};
+
+export default AddTodoButton;

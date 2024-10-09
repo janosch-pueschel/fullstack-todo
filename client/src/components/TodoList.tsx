@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import NewTodoItem from "./NewTodoItem";
 import Subheading from "./Subheading";
 import TodoItem from "./TodoItem";
@@ -9,7 +9,7 @@ interface Todos {
   done: boolean;
 }
 
-export default function TodoList() {
+const TodoList: FC = () => {
   const [todos, setTodos] = useState<Todos[]>([
     { id: 1, text: "Rubber cheese camembert de normandie gouda", done: false },
     {
@@ -48,4 +48,6 @@ export default function TodoList() {
       </div>
     </>
   );
-}
+};
+
+export default TodoList;
