@@ -3,5 +3,5 @@ interface Props {
 }
 
 export default function Subheading({ title }: Props) {
-  return <h1 className="text-slate-400 uppercase font-medium">{title}</h1>;
+  return <h1 className="text-slate-400 uppercase font-medium my-3">{title}</h1>;
 }
