@@ -30,6 +30,18 @@ const TodoList: FC = () => {
     );
   };
 
+  const addTodo = (todo: string) => {
+    if (todo.trim().length !== 0) {
+      const newTodo = {
+        id: todos.length + 1,
+        text: todo,
+        done: false,
+      };
+
+      setTodos((prevTodos) => [...prevTodos, newTodo]);
+    }
+  };
+
   return (
     <>
       <Subheading title="Today's Tasks" />
@@ -44,7 +56,7 @@ const TodoList: FC = () => {
           />
         ))}
 
-        <NewTodoItem />
+        <NewTodoItem addTodo={addTodo} />
       </div>
     </>
   );
