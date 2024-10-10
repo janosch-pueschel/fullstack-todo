@@ -62,6 +62,7 @@ const NewTodoItem: FC<Props> = ({ addTodo }) => {
           setShowTodoInput((prevShowTodoInput) => !prevShowTodoInput);
         }}
         type="button"
+        showTodoInput={showTodoInput}
       />
     </>
   );

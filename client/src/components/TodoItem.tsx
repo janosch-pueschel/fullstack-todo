@@ -1,4 +1,4 @@
-import { FaCircleCheck, FaRegCircle, FaXmark } from "react-icons/fa6";
+import { FaCircleCheck, FaRegCircle, FaTrash } from "react-icons/fa6";
 import Card from "./Card";
 import { FC } from "react";
 
@@ -11,24 +11,26 @@ interface Props {
 
 const TodoItem: FC<Props> = ({ id, text, done, toggleTodoDone }) => {
   return (
-    <Card className="flex justify-between items-center">
-      <div className="flex items-center space-x-5">
-        <span onClick={() => toggleTodoDone(id)} className=" text-lg">
-          {done ? (
-            <FaCircleCheck className="text-slate-300" />
-          ) : (
-            <FaRegCircle className="text-fuchsia-600" />
-          )}
-        </span>
-
-        <p
-          className={`${done && "line-through"} w-40 truncate overflow-hidden`}
-        >
-          {text}
-        </p>
+    <Card className="flex justify-between mx-2">
+      <div onClick={() => toggleTodoDone(id)} className="text-lg mr-3">
+        {done ? (
+          <FaCircleCheck className="text-slate-500" size={20} />
+        ) : (
+          <FaRegCircle className="text-fuchsia-600" size={20} />
+        )}
       </div>
 
-      <FaXmark className="text-slate-500" />
+      <p
+        className={`${
+          done && "line-through text-slate-500"
+        } text-slate-800 mr-auto pr-5 leading-5`}
+      >
+        {text}
+      </p>
+
+      <div>
+        <FaTrash className="text-slate-800" />
+      </div>
     </Card>
   );
 };
