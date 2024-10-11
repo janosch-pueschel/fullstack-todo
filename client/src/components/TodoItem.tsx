@@ -1,6 +1,8 @@
-import { FaCircleCheck, FaRegCircle, FaTrash } from "react-icons/fa6";
-import Card from "./Card";
 import { FC, useState } from "react";
+
+import { FaCircleCheck, FaRegCircle, FaTrash } from "react-icons/fa6";
+
+import Card from "./Card";
 import TodoEditor from "./TodoEditor";
 
 interface Props {

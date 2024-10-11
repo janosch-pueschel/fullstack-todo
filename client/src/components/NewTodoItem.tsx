@@ -1,5 +1,6 @@
-import AddTodoButton from "./AddTodoButton";
 import { FC } from "react";
+
+import AddTodoButton from "./AddTodoButton";
 import TodoEditor from "./TodoEditor";
 
 interface Props {

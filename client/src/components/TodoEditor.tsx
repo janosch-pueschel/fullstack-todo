@@ -1,6 +1,8 @@
 import { FC, useEffect, useRef, useState } from "react";
-import Card from "./Card";
+
 import { FaRegCircle, FaCheck } from "react-icons/fa6";
+
+import Card from "./Card";
 
 interface Props {
   setShowTodoEditor?: (value: boolean) => void;
