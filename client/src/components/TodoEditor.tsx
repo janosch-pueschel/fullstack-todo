@@ -1,26 +1,19 @@
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, MutableRefObject, useState } from "react";
 import Card from "./Card";
 import AddTodoButton from "./AddTodoButton";
 import { FaRegCircle } from "react-icons/fa6";
 
 interface Props {
-  showTodoEditor: boolean;
   setShowTodoEditor: (value: boolean) => void;
   addTodo: (text: string) => void;
+  inputElement: MutableRefObject<HTMLInputElement | null>;
 }
 
 const TodoEditor: FC<Props> = ({
-  showTodoEditor,
   setShowTodoEditor,
   addTodo,
+  inputElement,
 }) => {
-  const inputElement = useRef<HTMLInputElement | null>(null);
-  useEffect(() => {
-    if (inputElement.current) {
-      inputElement.current.focus();
-    }
-  }, [showTodoEditor]);
-
   const [todo, setTodo] = useState("");
 
   const handleSubmit = (event: React.FormEvent, todo: string) => {
@@ -32,11 +25,7 @@ const TodoEditor: FC<Props> = ({
   };
 
   return (
-    <Card
-      className={`${
-        showTodoEditor ? "block" : "hidden"
-      } flex items-center space-x-5`}
-    >
+    <Card className="flex items-center space-x-5">
       <span className=" text-lg">
         <FaRegCircle className="text-slate-300" />
       </span>
@@ -45,8 +34,8 @@ const TodoEditor: FC<Props> = ({
           <input
             type="text"
             className="bg-neutral-50 border-b border-slate-300 focus:outline-none"
-            ref={inputElement}
             value={todo}
+            ref={inputElement}
             onChange={(event) => setTodo(event.target.value)}
           />
           <span className="text-xs text-slate-400">Add Todo Item</span>
