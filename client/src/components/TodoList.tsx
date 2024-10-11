@@ -22,6 +22,8 @@ const TodoList: FC = () => {
     { id: 5, text: "Smelly cheese cheese slices cheddar", done: true },
   ]);
 
+  const [showTodoEditor, setShowTodoEditor] = useState(false);
+
   const toggleTodoDone = (id: number) => {
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
@@ -56,7 +58,7 @@ const TodoList: FC = () => {
           />
         ))}
 
-        <NewTodoItem addTodo={addTodo} />
+        <NewTodoItem addTodo={addTodo} showTodoEditor={showTodoEditor} setShowTodoEditor={setShowTodoEditor} />
       </div>
     </>
   );
