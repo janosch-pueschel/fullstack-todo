@@ -44,6 +44,16 @@ const TodoList: FC = () => {
     }
   };
 
+  const updateTodo = (id: number, text: string) => {
+    if (text.trim().length !== 0) {
+      setTodos((prevTodos) =>
+        prevTodos.map((todo) =>
+          todo.id === id ? { ...todo, text: text } : todo
+        )
+      );
+    }
+  };
+
   return (
     <>
       <Subheading title="Today's Tasks" />
@@ -55,10 +65,15 @@ const TodoList: FC = () => {
             text={text}
             done={done}
             toggleTodoDone={toggleTodoDone}
+            updateTodo={updateTodo}
           />
         ))}
 
-        <NewTodoItem addTodo={addTodo} showTodoEditor={showTodoEditor} setShowTodoEditor={setShowTodoEditor} />
+        <NewTodoItem
+          addTodo={addTodo}
+          showTodoEditor={showTodoEditor}
+          setShowTodoEditor={setShowTodoEditor}
+        />
       </div>
     </>
   );
