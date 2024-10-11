@@ -1,5 +1,5 @@
 import AddTodoButton from "./AddTodoButton";
-import { FC, useEffect, useRef } from "react";
+import { FC } from "react";
 import TodoEditor from "./TodoEditor";
 
 interface Props {
@@ -13,21 +13,13 @@ const NewTodoItem: FC<Props> = ({
   showTodoEditor,
   setShowTodoEditor,
 }) => {
-  const inputElement = useRef<HTMLInputElement | null>(null);
-
-  useEffect(() => {
-    if (inputElement.current) {
-      inputElement.current.focus();
-    }
-  }, [showTodoEditor]);
-
   return (
     <>
       <div className={showTodoEditor ? "block" : "hidden"}>
         <TodoEditor
           setShowTodoEditor={setShowTodoEditor}
           addTodo={addTodo}
-          inputElement={inputElement}
+          showTodoEditor={showTodoEditor}
         />
       </div>
 

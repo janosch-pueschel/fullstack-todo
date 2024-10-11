@@ -1,19 +1,27 @@
-import { FC, MutableRefObject, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import Card from "./Card";
 import AddTodoButton from "./AddTodoButton";
 import { FaRegCircle } from "react-icons/fa6";
 
 interface Props {
   setShowTodoEditor: (value: boolean) => void;
+  showTodoEditor?: boolean;
   addTodo: (text: string) => void;
-  inputElement: MutableRefObject<HTMLInputElement | null>;
 }
 
 const TodoEditor: FC<Props> = ({
   setShowTodoEditor,
+  showTodoEditor,
   addTodo,
-  inputElement,
 }) => {
+  const inputElement = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    if (inputElement.current) {
+      inputElement.current.focus();
+    }
+  }, [showTodoEditor]);
+
   const [todo, setTodo] = useState("");
 
   const handleSubmit = (event: React.FormEvent, todo: string) => {
