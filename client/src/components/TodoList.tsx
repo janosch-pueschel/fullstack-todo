@@ -55,6 +55,12 @@ const TodoList: FC = () => {
     }
   };
 
+  const deleteTodo = (id: number) => {
+    setTodos((prevTodos) => {
+      return prevTodos.filter((todo) => todo.id !== id);
+    });
+  };
+
   return (
     <>
       <Subheading title="Today's Tasks" />
@@ -67,6 +73,7 @@ const TodoList: FC = () => {
             done={done}
             toggleTodoDone={toggleTodoDone}
             updateTodo={updateTodo}
+            deleteTodo={deleteTodo}
           />
         ))}
 

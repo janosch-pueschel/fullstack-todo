@@ -11,6 +11,7 @@ interface Props {
   done: boolean;
   toggleTodoDone: (id: number) => void;
   updateTodo: (id: number, text: string) => void;
+  deleteTodo: (id: number) => void;
 }
 
 const TodoItem: FC<Props> = ({
@@ -19,6 +20,7 @@ const TodoItem: FC<Props> = ({
   done,
   toggleTodoDone,
   updateTodo,
+  deleteTodo,
 }) => {
   const [showUpdateEditor, setShowUpdateEditor] = useState(false);
   return (
@@ -50,7 +52,10 @@ const TodoItem: FC<Props> = ({
           </p>
 
           <div>
-            <FaTrash className="text-slate-800" />
+            <FaTrash
+              className="text-slate-800"
+              onClick={() => deleteTodo(id)}
+            />
           </div>
         </Card>
       )}
